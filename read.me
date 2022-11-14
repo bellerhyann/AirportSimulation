@@ -1,0 +1,45 @@
+Computer Systems w Dr Blythe
+October 2022
+Written by Belle Erhardt
+Written in OSX
+
+ Airplane Project: From the command line, reading in how many passengers, and how
+ many times they will tour around on planes. This projects creates 8 airplanes (in
+ threads), and allows them to share resources such as passengers, and a runway. This
+ planeTest file uses provided code from airportAnimator to animate its functions.
+ 
+Note to Grader:
+This project runs as the instructions ask. No special steps necessary. Given of 
+course its run in an osx system, otherwise a #include will have to be altered
+    
+Q&A:
+1. Try running your program with only 11 passengers. What happens? Why?
+    Each thread enters a deadlock situation containing either 1 or 2 passengers.
+2. Try running your program with 12 passengers. What happens? Why?
+    Same result as question 1, each thread accesses 1 or 2 passengers before they
+    are stuck waiting for another plane to release theirs.
+3. Try running your program with 50 passengers and 100 tours. What happens? why?
+    In this result while there are enough passengers for a couple planes to fly
+    return, before completing all the tours the threads wind up getting stuck.
+    Each plane contained between 5-8 passengers before when they all were stuck
+    waiting for more passengers that would never board.
+4. Try running your program with 100 passengers and 20 tours. What happens? Why?
+    In this case my airport had each plane flying in and out with out getting
+    dead locked. While there may have been a plane waiting for a passenger,
+    another plane deplaning their own allowed for the next one to tour with-
+    out getting stuck.
+5. What is the minimum number of passengers that will guarantee avoidance of
+deadlock? Why?
+    89 is the minimum number of passengers needed to guarantee no deadlocks will
+    occur. This is because even if the passengers are evenly distributed. You could
+    have up to 7 planes waiting with 11 passengers, and the last plane would be able
+    to have enough passengers to complete its flight.
+    
+    
+Steps processed:
+1. Created Needed make file (with included commands needed to compile)
+2. Analyzed the provided code
+    * Saw what was handled from the start, and what I needed to alter
+3. Reviewed class examples to create threads
+4. Adjusted the threads to corrospond to correct plane
+5. Worked with semaphores to create threads that shared reasources nicely.
